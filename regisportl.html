@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXAM 2025 — National Entrance Examination Authority</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy2: #112040;
+  --blue: #1a4fad;
+  --blue2: #2563eb;
+  --accent: #e8a020;
+  --accent2: #f59e0b;
+  --red: #c0392b;
+  --green: #16a34a;
+  --light: #f4f6fb;
+  --border: #d0d8e8;
+  --text: #1a2540;
+  --muted: #64748b;
+  --white: #ffffff;
+  --success-bg: #ecfdf5;
+  --error-bg: #fef2f2;
+  --warn-bg: #fffbeb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IBM Plex Sans',sans-serif;background:#f0f4f8;color:var(--text);min-height:100vh}
+ 
+/* TOP STRIP */
+.top-strip{background:var(--navy);color:#fff;font-size:12px;padding:5px 0;text-align:center;letter-spacing:0.5px}
+.top-strip marquee{width:100%}
+ 
+/* HEADER */
+header{background:var(--navy2);padding:0;border-bottom:3px solid var(--accent)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:12px 20px}
+.logo-emblem{width:60px;height:60px;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--navy);flex-shrink:0;border:3px solid var(--accent)}
+.header-title h1{font-size:20px;font-weight:600;color:#fff;letter-spacing:0.3px}
+.header-title p{font-size:11px;color:#a0b0cc;letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.header-right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn-header{background:var(--accent);color:var(--navy);padding:7px 18px;border:none;border-radius:3px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background 0.2s}
+.btn-header:hover{background:var(--accent2)}
+.btn-header-outline{background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;padding:7px 18px;border-radius:3px;font-size:13px;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-header-outline:hover{background:rgba(255,255,255,0.1)}
+ 
+/* NAV */
+nav{background:var(--blue);border-bottom:2px solid rgba(0,0,0,0.2)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-item{color:rgba(255,255,255,0.85);padding:12px 20px;font-size:13px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all 0.2s;border:none;background:none;font-family:inherit}
+.nav-item:hover,.nav-item.active{color:#fff;background:rgba(0,0,0,0.15);border-bottom:3px solid var(--accent)}
+ 
+/* PAGES */
+.page{display:none;max-width:1200px;margin:0 auto;padding:24px 20px}
+.page.active{display:block}
+ 
+/* TICKER */
+.ticker-bar{background:var(--navy);color:var(--accent);padding:8px 20px;display:flex;align-items:center;gap:12px;font-size:13px}
+.ticker-label{background:var(--accent);color:var(--navy);padding:2px 10px;font-weight:700;font-size:11px;letter-spacing:1px;flex-shrink:0;border-radius:2px}
+ 
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 50%,#0d2447 100%);color:#fff;padding:40px;border-radius:4px;margin-bottom:24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-40px;top:-40px;width:300px;height:300px;background:radial-gradient(circle,rgba(26,79,173,0.4) 0%,transparent 70%)}
+.hero-content{position:relative;z-index:1}
+.hero h2{font-size:28px;font-weight:600;margin-bottom:8px}
+.hero p{color:#a0b8d8;font-size:14px;margin-bottom:20px;max-width:600px;line-height:1.6}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:5px 14px;border-radius:2px;font-size:12px;color:#c0d0e8}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--navy);padding:11px 28px;border:none;border-radius:3px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-secondary{background:transparent;border:2px solid rgba(255,255,255,0.5);color:#fff;padding:11px 28px;border-radius:3px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,0.05)}
+ 
+/* COUNTDOWN */
+.countdown-section{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px 24px;margin-bottom:24px}
+.section-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::before{content:'';width:4px;height:18px;background:var(--blue);display:block;border-radius:2px}
+.countdown-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.countdown-item{background:var(--navy);border-radius:4px;padding:16px;text-align:center}
+.countdown-label{font-size:11px;color:#a0b0cc;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.countdown-time{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:500;color:var(--accent)}
+.countdown-sub{font-size:11px;color:#607090;margin-top:4px}
+ 
+/* GRID 3 */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-bottom:24px}
+.card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card h3{font-size:14px;font-weight:600;color:var(--navy)}
+ 
+/* NOTICE BOARD */
+.notice-item{padding:10px 0;border-bottom:1px dashed var(--border);display:flex;gap:10px;align-items:flex-start}
+.notice-item:last-child{border-bottom:none;padding-bottom:0}
+.notice-dot{width:8px;height:8px;background:var(--blue2);border-radius:50%;flex-shrink:0;margin-top:5px}
+.notice-text{font-size:13px;color:var(--text);line-height:1.5}
+.notice-date{font-size:11px;color:var(--muted);margin-top:3px;font-family:'IBM Plex Mono',monospace}
+.new-tag{background:#fef2f2;color:var(--red);font-size:10px;font-weight:700;padding:1px 6px;border-radius:2px;vertical-align:middle;border:1px solid #fca5a5}
+ 
+/* SCHEDULE TABLE */
+.schedule-table{width:100%;border-collapse:collapse;font-size:13px}
+.schedule-table th{background:var(--navy);color:#fff;padding:9px 12px;text-align:left;font-weight:500;font-size:12px;letter-spacing:0.5px}
+.schedule-table td{padding:9px 12px;border-bottom:1px solid var(--border)}
+.schedule-table tr:hover td{background:var(--light)}
+.status-open{color:var(--green);font-weight:600;font-size:12px}
+.status-closed{color:var(--red);font-size:12px}
+.status-upcoming{color:var(--accent2);font-size:12px}
+ 
+/* STATS */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);margin-bottom:24px;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.stat-item{background:#fff;padding:20px;text-align:center}
+.stat-num{font-size:28px;font-weight:600;color:var(--blue);font-family:'IBM Plex Mono',monospace}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+ 
+/* FORMS & REGISTRATION */
+.form-page{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.form-header{background:var(--navy);color:#fff;padding:20px 28px}
+.form-header h2{font-size:18px;font-weight:600}
+.form-header p{font-size:13px;color:#a0b0cc;margin-top:4px}
+.progress-steps{display:flex;background:#f8fafc;border-bottom:1px solid var(--border);overflow-x:auto}
+.step-item{flex:1;min-width:120px;padding:14px 10px;text-align:center;font-size:12px;color:var(--muted);border-right:1px solid var(--border);position:relative;cursor:default}
+.step-item:last-child{border-right:none}
+.step-item.active{color:var(--blue);font-weight:600;background:#fff}
+.step-item.done{color:var(--green)}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--border);color:var(--muted);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin:0 auto 6px}
+.step-item.active .step-num{background:var(--blue);color:#fff}
+.step-item.done .step-num{background:var(--green);color:#fff}
+.form-body{padding:28px}
+.form-section{margin-bottom:24px}
+.form-section-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:13px;font-weight:500;color:var(--text)}
+label .req{color:var(--red)}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=password],input[type=number],select,textarea{
+  width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:3px;font-family:inherit;font-size:14px;color:var(--text);background:#fff;transition:border 0.2s;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(37,99,235,0.08)}
+input.error{border-color:var(--red)}
+.field-hint{font-size:11px;color:var(--muted)}
+.field-error{font-size:11px;color:var(--red)}
+.otp-row{display:flex;gap:8px;align-items:flex-end}
+.otp-row input{flex:1}
+.btn-otp{background:var(--blue);color:#fff;border:none;padding:9px 16px;border-radius:3px;font-size:13px;cursor:pointer;font-family:inherit;white-space:nowrap;font-weight:500}
+.btn-otp:hover{background:var(--blue2)}
+.btn-otp:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
+.form-actions{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.btn-back{background:#f1f5f9;color:var(--text);border:1px solid var(--border);padding:10px 24px;border-radius:3px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:500}
+.btn-next{background:var(--blue);color:#fff;border:none;padding:10px 28px;border-radius:3px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-next:hover{background:var(--blue2)}
+.btn-submit{background:var(--green);color:#fff;border:none;padding:10px 28px;border-radius:3px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+ 
+/* FILE UPLOAD */
+.file-upload{border:2px dashed var(--border);border-radius:4px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;background:#fafbfc}
+.file-upload:hover{border-color:var(--blue);background:#f0f4ff}
+.file-upload input{display:none}
+.file-upload-icon{font-size:28px;margin-bottom:8px}
+.file-upload-text{font-size:13px;color:var(--muted)}
+.file-preview{margin-top:10px;font-size:12px;color:var(--green);font-weight:500}
+ 
+/* CAPTCHA */
+.captcha-box{background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.captcha-text{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--navy);letter-spacing:6px;background:linear-gradient(135deg,#e2e8f0,#cbd5e1);padding:4px 12px;border-radius:2px;user-select:none}
+ 
+/* REVIEW */
+.review-section{margin-bottom:20px}
+.review-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+.review-value{font-size:14px;color:var(--text);font-weight:500}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.review-item{padding:12px;background:var(--light);border-radius:3px}
+ 
+/* LOGIN */
+.login-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.login-panel{padding:40px}
+.login-side{background:var(--navy);padding:40px;display:flex;flex-direction:column;justify-content:center}
+.login-side h3{font-size:22px;color:#fff;font-weight:600;margin-bottom:12px}
+.login-side p{color:#8090b0;font-size:14px;line-height:1.6;margin-bottom:20px}
+.login-steps{list-style:none;display:flex;flex-direction:column;gap:12px}
+.login-steps li{color:#a0b4cc;font-size:13px;padding-left:20px;position:relative}
+.login-steps li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+ 
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:280px 1fr;gap:20px}
+.dash-sidebar{display:flex;flex-direction:column;gap:16px}
+.user-card{background:var(--navy);color:#fff;border-radius:4px;padding:20px;text-align:center}
+.user-avatar{width:60px;height:60px;background:var(--blue);border-radius:50%;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;border:3px solid var(--accent)}
+.user-name{font-size:16px;font-weight:600;margin-bottom:4px}
+.user-appno{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#8090b0}
+.sidebar-menu{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.sidebar-menu-item{padding:12px 16px;font-size:13px;cursor:pointer;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;transition:background 0.15s;color:var(--text)}
+.sidebar-menu-item:last-child{border-bottom:none}
+.sidebar-menu-item:hover,.sidebar-menu-item.active{background:var(--light);color:var(--blue);font-weight:500}
+.sidebar-menu-item .icon{width:18px;text-align:center;font-size:14px}
+.dash-main{display:flex;flex-direction:column;gap:16px}
+.status-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px}
+.status-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.status-badge{padding:4px 12px;border-radius:2px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.status-submitted{background:#ecfdf5;color:var(--green);border:1px solid #bbf7d0}
+.status-pending{background:var(--warn-bg);color:#b45309;border:1px solid #fde68a}
+.status-incomplete{background:var(--error-bg);color:var(--red);border:1px solid #fca5a5}
+.timeline{display:flex;flex-direction:column;gap:0}
+.timeline-item{display:flex;gap:16px;padding:12px 0;border-bottom:1px dashed var(--border)}
+.timeline-item:last-child{border-bottom:none}
+.timeline-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.dot-green{background:var(--green)}
+.dot-blue{background:var(--blue)}
+.dot-gray{background:var(--border)}
+.dot-amber{background:var(--accent2)}
+.timeline-content h4{font-size:13px;font-weight:600;margin-bottom:3px}
+.timeline-content p{font-size:12px;color:var(--muted)}
+ 
+/* PAYMENT */
+.payment-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.payment-header{background:var(--navy);color:#fff;padding:16px 20px}
+.fee-table{width:100%;border-collapse:collapse}
+.fee-table th{background:var(--light);padding:10px 16px;text-align:left;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border)}
+.fee-table td{padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px}
+.fee-table tr:last-child td{border-bottom:none}
+.fee-highlight{background:var(--light);font-weight:600}
+.payment-methods{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;padding:16px}
+.pay-method{border:2px solid var(--border);border-radius:4px;padding:14px;text-align:center;cursor:pointer;transition:all 0.2s;font-size:13px;font-weight:500}
+.pay-method:hover,.pay-method.selected{border-color:var(--blue);background:#f0f4ff;color:var(--blue)}
+.pay-icon{font-size:24px;margin-bottom:6px}
+ 
+/* ADMIT CARD */
+.admit-card{background:#fff;border:2px solid var(--navy);border-radius:4px;overflow:hidden;max-width:800px;margin:0 auto}
+.admit-header{background:var(--navy);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:16px}
+.admit-logo{width:50px;height:50px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--navy);flex-shrink:0}
+.admit-header h2{font-size:18px;font-weight:600}
+.admit-header p{font-size:12px;color:#8090b0}
+.admit-body{padding:20px 24px}
+.admit-grid{display:grid;grid-template-columns:1fr 120px;gap:20px;margin-bottom:20px}
+.admit-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.admit-field .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+.admit-field .value{font-size:14px;font-weight:500;color:var(--text)}
+.qr-box{width:120px;height:120px;background:var(--light);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.qr-pattern{width:90px;height:90px}
+.admit-exam-details{background:var(--light);border-radius:3px;padding:14px;margin-bottom:16px}
+.admit-exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.admit-instr{border:1px solid var(--border);border-radius:3px;padding:14px}
+.admit-instr h4{font-size:13px;font-weight:600;margin-bottom:8px;color:var(--navy)}
+.admit-instr ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.admit-instr li{font-size:12px;color:var(--muted);padding-left:14px;position:relative}
+.admit-instr li::before{content:'•';position:absolute;left:0;color:var(--blue)}
+.admit-footer{background:var(--navy);color:rgba(255,255,255,0.7);padding:10px 24px;font-size:11px;text-align:center}
+.admit-photo{width:100%;height:120px;background:#e2e8f0;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px}
+ 
+/* RESULTS */
+.results-search{background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px;margin-bottom:20px}
+.scorecard{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;max-width:700px;margin:0 auto}
+.scorecard-header{background:var(--navy);color:#fff;padding:20px 24px;text-align:center}
+.score-main{font-size:60px;font-weight:600;font-family:'IBM Plex Mono',monospace;color:var(--accent)}
+.score-label{font-size:13px;color:#8090b0;margin-top:4px}
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.score-subject{background:#fff;padding:16px;text-align:center}
+.score-subject .marks{font-size:22px;font-weight:600;color:var(--blue);font-family:'IBM Plex Mono',monospace}
+.score-subject .subj{font-size:12px;color:var(--muted);margin-top:4px}
+.rank-section{padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:space-around}
+.rank-item{text-align:center}
+.rank-num{font-size:24px;font-weight:600;color:var(--text);font-family:'IBM Plex Mono',monospace}
+.rank-label{font-size:12px;color:var(--muted);margin-top:3px}
+ 
+/* ADMIN */
+.admin-grid{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.admin-sidebar{background:var(--navy);border-radius:4px;padding:16px 0;overflow:hidden}
+.admin-nav-item{padding:11px 20px;color:rgba(255,255,255,0.7);font-size:13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all 0.15s}
+.admin-nav-item:hover,.admin-nav-item.active{background:rgba(255,255,255,0.1);color:#fff}
+.admin-nav-item.active{border-left:3px solid var(--accent)}
+.admin-section{font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:1px;padding:16px 20px 6px;margin-top:8px}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-weight:500;font-size:12px}
+.data-table td{padding:10px 14px;border-bottom:1px solid var(--border)}
+.data-table tr:hover td{background:var(--light)}
+.action-btn{padding:4px 10px;border-radius:2px;border:none;font-size:12px;cursor:pointer;font-family:inherit;font-weight:500}
+.btn-view{background:#eff6ff;color:var(--blue);border:1px solid #bfdbfe}
+.btn-approve{background:#ecfdf5;color:var(--green);border:1px solid #bbf7d0}
+.btn-reject{background:var(--error-bg);color:var(--red);border:1px solid #fca5a5}
+.admin-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.admin-stat{background:#fff;border:1px solid var(--border);border-radius:4px;padding:16px;text-align:center}
+.admin-stat-num{font-size:28px;font-weight:600;font-family:'IBM Plex Mono',monospace}
+.admin-stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+ 
+/* HELPDESK */
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:3px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px 16px;font-size:14px;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.faq-q:hover{background:var(--light)}
+.faq-arrow{transition:transform 0.2s;color:var(--muted);font-size:18px}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 16px 14px;font-size:13px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border)}
+.faq-item.open .faq-a{display:block}
+.ticket-form{background:#fff;border:1px solid var(--border);border-radius:4px;padding:24px}
+.ticket-id{background:var(--success-bg);border:1px solid #bbf7d0;border-radius:3px;padding:12px 16px;font-size:13px;color:var(--green);margin-top:12px;display:none}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+ 
+/* ALERTS */
+.alert{padding:12px 16px;border-radius:3px;font-size:13px;margin-bottom:16px;display:flex;align-items:flex-start;gap:10px}
+.alert-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.alert-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af}
+.alert-success{background:var(--success-bg);border:1px solid #bbf7d0;color:#166534}
+.alert-warn{background:var(--warn-bg);border:1px solid #fde68a;color:#92400e}
+.alert-error{background:var(--error-bg);border:1px solid #fca5a5;color:#991b1b}
+ 
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;display:none}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:4px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.modal-header{background:var(--navy);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.modal-header h3{font-size:16px;font-weight:600}
+.modal-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:22px;cursor:pointer;line-height:1}
+.modal-body{padding:24px}
+.modal-footer{padding:16px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+ 
+/* TOAST */
+.toast-container{position:fixed;bottom:20px;right:20px;z-index:2000;display:flex;flex-direction:column;gap:8px}
+.toast{background:var(--navy);color:#fff;padding:12px 18px;border-radius:4px;font-size:13px;min-width:250px;box-shadow:0 4px 20px rgba(0,0,0,0.3);display:flex;align-items:center;gap:10px;animation:slideIn 0.3s ease;border-left:4px solid var(--accent)}
+.toast.success{border-left-color:var(--green)}
+.toast.error{border-left-color:var(--red)}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+ 
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:30px 20px;margin-top:40px;font-size:13px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.footer-col h4{color:#fff;font-size:14px;font-weight:600;margin-bottom:12px}
+.footer-col a,.footer-col p{color:rgba(255,255,255,0.5);text-decoration:none;display:block;margin-bottom:6px;cursor:pointer;transition:color 0.2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1200px;margin:20px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
+ 
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-inner{flex-wrap:wrap;gap:10px}
+  .header-right{width:100%;justify-content:flex-end}
+  .dash-grid,.admin-grid{grid-template-columns:1fr}
+  .login-wrap{grid-template-columns:1fr}
+  .login-side{display:none}
+  .admit-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .score-grid{grid-template-columns:1fr}
+  .hero h2{font-size:20px}
+}
+ 
+/* PRINT */
+@media print{
+  nav,header,.top-strip,.btn-primary,.btn-secondary,footer,.form-actions{display:none!important}
+  .admit-card{border:1px solid #000!important}
+  body{background:#fff!important}
+}
+</style>
+</head>
+<body>
+ 
+<!-- TOP STRIP -->
+<div class="top-strip">
+  <marquee behavior="scroll" direction="left" scrollamount="3">
+    ★ NEXAM 2025 Registration is OPEN — Last Date: 31 March 2025 &nbsp;&nbsp;|&nbsp;&nbsp; 
+    ★ Correction Window: 5 April – 10 April 2025 &nbsp;&nbsp;|&nbsp;&nbsp; 
+    ★ Admit Cards to be released on 28 April 2025 &nbsp;&nbsp;|&nbsp;&nbsp;
+    ★ Exam Date: 15 May 2025 &nbsp;&nbsp;|&nbsp;&nbsp; 
+    ★ Helpdesk: 1800-XXX-XXXX (Toll Free, 9AM–6PM) &nbsp;&nbsp;|&nbsp;&nbsp;
+    ★ New: Fee Waivers for EWS Category announced — Check Information Bulletin
+  </marquee>
+</div>
+ 
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-emblem">🎓</div>
+    <div class="header-title">
+      <h1>NEXAM 2025 — National Entrance Examination</h1>
+      <p>National Testing Authority &nbsp;|&nbsp; Ministry of Education, Government of India</p>
+    </div>
+    <div class="header-right">
+      <button class="btn-header-outline" onclick="showPage('login')">Login</button>
+      <button class="btn-header" onclick="showPage('register')">Apply Now</button>
+    </div>
+  </div>
+</header>
+ 
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-item active" onclick="navClick(this,'home')">🏠 Home</button>
+    <button class="nav-item" onclick="navClick(this,'bulletin')">📋 Information Bulletin</button>
+    <button class="nav-item" onclick="navClick(this,'register')">✏️ Registration</button>
+    <button class="nav-item" onclick="navClick(this,'login')">🔐 Login</button>
+    <button class="nav-item" onclick="navClick(this,'dashboard')">📊 Dashboard</button>
+    <button class="nav-item" onclick="navClick(this,'admit')">🎫 Admit Card</button>
+    <button class="nav-item" onclick="navClick(this,'results')">📈 Results</button>
+    <button class="nav-item" onclick="navClick(this,'admin')">⚙️ Admin Panel</button>
+    <button class="nav-item" onclick="navClick(this,'helpdesk')">🆘 Helpdesk</button>
+  </div>
+</nav>
+ 
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+ 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Confirm</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+ 
+<!-- ==================== HOME ==================== -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-content">
+      <h2>National Entrance Examination 2025</h2>
+      <p>Unified gateway to premier institutions across India. NEXAM 2025 enables access to undergraduate programs in Engineering, Medicine, Science, and Commerce streams through a single national-level examination.</p>
+      <div class="hero-badges">
+        <span class="badge">📅 Exam: 15 May 2025</span>
+        <span class="badge">🏛 3,200+ Institutions</span>
+        <span class="badge">📍 All India</span>
+        <span class="badge">🌐 22 Languages</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="showPage('register')">Register Now →</button>
+        <button class="btn-secondary" onclick="showPage('bulletin')">Information Bulletin</button>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">24.8L</div><div class="stat-label">Registered Candidates</div></div>
+    <div class="stat-item"><div class="stat-num">3,247</div><div class="stat-label">Exam Centres</div></div>
+    <div class="stat-item"><div class="stat-num">570+</div><div class="stat-label">Participating Institutions</div></div>
+    <div class="stat-item"><div class="stat-num">22</div><div class="stat-label">Medium of Exam</div></div>
+    <div class="stat-item"><div class="stat-num">2025</div><div class="stat-label">Session Year</div></div>
+  </div>
+ 
+  <!-- COUNTDOWN -->
+  <div class="countdown-section">
+    <div class="section-title">Registration Deadline Countdown</div>
+    <div class="countdown-grid">
+      <div class="countdown-item"><div class="countdown-label">Days Left</div><div class="countdown-time" id="cd-days">00</div><div class="countdown-sub">to close</div></div>
+      <div class="countdown-item"><div class="countdown-label">Hours</div><div class="countdown-time" id="cd-hours">00</div><div class="countdown-sub">remaining</div></div>
+      <div class="countdown-item"><div class="countdown-label">Minutes</div><div class="countdown-time" id="cd-mins">00</div><div class="countdown-sub">remaining</div></div>
+      <div class="countdown-item"><div class="countdown-label">Seconds</div><div class="countdown-time" id="cd-secs">00</div><div class="countdown-sub">remaining</div></div>
+    </div>
+  </div>
+ 
+  <div class="grid-3">
+    <!-- NOTICES -->
+    <div class="card">
+      <div class="card-header">
+        <h3>📢 Notice Board</h3>
+        <span style="font-size:12px;color:var(--blue);cursor:pointer">View All</span>
+      </div>
+      <div class="notice-item">
+        <div class="notice-dot"></div>
+        <div>
+          <div class="notice-text">NEXAM 2025 Registration Extended <span class="new-tag">NEW</span></div>
+          <div class="notice-date">15 Mar 2025</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-dot"></div>
+        <div>
+          <div class="notice-text">Fee Waiver Notification for EWS Category Candidates <span class="new-tag">NEW</span></div>
+          <div class="notice-date">12 Mar 2025</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-dot"></div>
+        <div>
+          <div class="notice-text">Mock Test Available on Official Portal</div>
+          <div class="notice-date">08 Mar 2025</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-dot"></div>
+        <div>
+          <div class="notice-text">Information Bulletin 2025 Released</div>
+          <div class="notice-date">01 Mar 2025</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-dot"></div>
+        <div>
+          <div class="notice-text">Correction Window Dates Announced</div>
+          <div class="notice-date">28 Feb 2025</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- SCHEDULE -->
+    <div class="card" style="grid-column:span 2">
+      <div class="card-header"><h3>📅 Important Dates & Schedule</h3></div>
+      <table class="schedule-table">
+        <thead>
+          <tr><th>Event</th><th>Date</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Registration Opens</td><td>01 Feb 2025</td><td class="status-closed">Closed</td></tr>
+          <tr><td>Registration (Extended)</td><td>31 Mar 2025</td><td class="status-open">Open ✓</td></tr>
+          <tr><td>Fee Payment</td><td>31 Mar 2025</td><td class="status-open">Open ✓</td></tr>
+          <tr><td>Application Correction Window</td><td>05–10 Apr 2025</td><td class="status-upcoming">Upcoming</td></tr>
+          <tr><td>Admit Card Download</td><td>28 Apr 2025</td><td class="status-upcoming">Upcoming</td></tr>
+          <tr><td>Examination Date</td><td>15 May 2025</td><td class="status-upcoming">Upcoming</td></tr>
+          <tr><td>Result Declaration</td><td>10 Jun 2025</td><td class="status-upcoming">Upcoming</td></tr>
+          <tr><td>Counselling Begins</td><td>25 Jun 2025</td><td class="status-upcoming">Upcoming</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+ 
+  <div class="grid-3">
+    <div class="card">
+      <h3 style="margin-bottom:12px">🏫 Exam Pattern</h3>
+      <table class="schedule-table">
+        <tr><td>Duration</td><td><strong>3 Hours</strong></td></tr>
+        <tr><td>Total Questions</td><td><strong>180 MCQ</strong></td></tr>
+        <tr><td>Total Marks</td><td><strong>720</strong></td></tr>
+        <tr><td>Marking (+ve)</td><td><strong>+4 each</strong></td></tr>
+        <tr><td>Negative Marking</td><td><strong>−1 each</strong></td></tr>
+        <tr><td>Sections</td><td><strong>Physics, Chemistry, Biology</strong></td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px">💰 Application Fee</h3>
+      <table class="schedule-table">
+        <tr><td>General / OBC</td><td><strong>₹1,600</strong></td></tr>
+        <tr><td>SC / ST / PwD</td><td><strong>₹900</strong></td></tr>
+        <tr><td>EWS (Female)</td><td><strong>₹900</strong></td></tr>
+        <tr><td>Outside India</td><td><strong>₹8,500</strong></td></tr>
+        <tr><td>Late Fee</td><td><strong>₹200 extra</strong></td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px">📞 Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <button style="text-align:left;background:none;border:1px solid var(--border);padding:10px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--blue)" onclick="showPage('register')">→ New Registration</button>
+        <button style="text-align:left;background:none;border:1px solid var(--border);padding:10px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--blue)" onclick="showPage('login')">→ Candidate Login</button>
+        <button style="text-align:left;background:none;border:1px solid var(--border);padding:10px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--blue)" onclick="showPage('admit')">→ Download Admit Card</button>
+        <button style="text-align:left;background:none;border:1px solid var(--border);padding:10px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--blue)" onclick="showPage('results')">→ Check Results</button>
+        <button style="text-align:left;background:none;border:1px solid var(--border);padding:10px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:13px;color:var(--blue)" onclick="showPage('helpdesk')">→ Contact Helpdesk</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== BULLETIN ==================== -->
+<div class="page" id="page-bulletin">
+  <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>The Information Bulletin contains complete details about eligibility, exam pattern, syllabus, reservation policy and fee structure. Download the PDF for offline reference.</div></div>
+  <div class="card" style="margin-bottom:20px">
+    <div class="card-header"><h3>📄 Information Bulletin 2025</h3><button class="btn-primary" style="font-size:12px;padding:6px 16px" onclick="toast('PDF download started!','success')">⬇ Download PDF</button></div>
+    <div style="padding:0">
+      <table class="schedule-table">
+        <tr><th>Chapter</th><th>Title</th><th>Pages</th></tr>
+        <tr><td>1</td><td>Introduction & Overview</td><td>1–8</td></tr>
+        <tr><td>2</td><td>Eligibility Criteria</td><td>9–15</td></tr>
+        <tr><td>3</td><td>How to Apply (Step-by-Step)</td><td>16–22</td></tr>
+        <tr><td>4</td><td>Exam Pattern & Syllabus</td><td>23–48</td></tr>
+        <tr><td>5</td><td>Category-wise Reservation</td><td>49–54</td></tr>
+        <tr><td>6</td><td>Fee Structure & Modes of Payment</td><td>55–58</td></tr>
+        <tr><td>7</td><td>Exam Centres List</td><td>59–80</td></tr>
+        <tr><td>8</td><td>Admit Card Guidelines</td><td>81–86</td></tr>
+        <tr><td>9</td><td>Counselling & Seat Allotment</td><td>87–96</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="card">
+      <h3 style="margin-bottom:12px">✅ Eligibility Criteria</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--text)">
+        <p><strong>Age:</strong> 17–25 years as on 31 Dec 2025</p>
+        <p><strong>Qualification:</strong> Passed 10+2 or equivalent with PCB</p>
+        <p><strong>Minimum Marks:</strong> 50% (General), 45% (SC/ST/OBC)</p>
+        <p><strong>Attempts:</strong> Maximum 3 consecutive attempts</p>
+        <p><strong>Nationality:</strong> Indian / OCI / NRI</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px">📝 Syllabus</h3>
+      <div style="font-size:13px;display:flex;flex-direction:column;gap:6px">
+        <p><strong>Physics:</strong> Class 11 & 12 NCERT topics</p>
+        <p><strong>Chemistry:</strong> Physical, Organic, Inorganic Chemistry</p>
+        <p><strong>Biology:</strong> Botany & Zoology (NCERT based)</p>
+        <p><strong>Total:</strong> 720 marks, 180 Questions</p>
+        <button style="margin-top:10px;text-align:left;background:#eff6ff;border:1px solid #bfdbfe;padding:8px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:12px;color:var(--blue)" onclick="toast('Detailed syllabus PDF downloading...','success')">⬇ Download Detailed Syllabus</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:12px">🏛 Documents Required</h3>
+      <div style="font-size:13px;display:flex;flex-direction:column;gap:6px">
+        <p>• Class 10 Mark Sheet / Certificate</p>
+        <p>• Class 12 Mark Sheet / Certificate</p>
+        <p>• Category Certificate (if applicable)</p>
+        <p>• Passport-size Photograph (JPG, max 200KB)</p>
+        <p>• Signature (JPG, max 50KB)</p>
+        <p>• ID Proof (Aadhaar / Passport / PAN)</p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== REGISTER ==================== -->
+<div class="page" id="page-register">
+  <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>Registration closes on <strong>31 March 2025</strong>. Ensure all documents are ready before starting. Use only official documents — misrepresentation will lead to disqualification.</div></div>
+  <div class="form-page">
+    <div class="form-header">
+      <h2>NEXAM 2025 — Online Application Form</h2>
+      <p>Complete all steps carefully. Fields marked with * are mandatory.</p>
+    </div>
+    <div class="progress-steps" id="progressSteps">
+      <div class="step-item active" data-step="1"><div class="step-num">1</div>Basic Details</div>
+      <div class="step-item" data-step="2"><div class="step-num">2</div>Personal Details</div>
+      <div class="step-item" data-step="3"><div class="step-num">3</div>Academic Details</div>
+      <div class="step-item" data-step="4"><div class="step-num">4</div>Upload Documents</div>
+      <div class="step-item" data-step="5"><div class="step-num">5</div>Review & Submit</div>
+    </div>
+    <div class="form-body">
+      <!-- STEP 1 -->
+      <div id="step1" class="form-step">
+        <div class="form-section">
+          <div class="form-section-title">Basic Information</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name <span class="req">*</span></label>
+              <input type="text" id="r-fname" placeholder="As per 10th certificate">
+              <span class="field-hint">Use capital letters as per certificate</span>
+            </div>
+            <div class="form-group">
+              <label>Middle Name</label>
+              <input type="text" id="r-mname" placeholder="Optional">
+            </div>
+            <div class="form-group">
+              <label>Last Name / Surname <span class="req">*</span></label>
+              <input type="text" id="r-lname" placeholder="As per 10th certificate">
+            </div>
+            <div class="form-group">
+              <label>Date of Birth <span class="req">*</span></label>
+              <input type="date" id="r-dob">
+            </div>
+            <div class="form-group">
+              <label>Email Address <span class="req">*</span></label>
+              <input type="email" id="r-email" placeholder="Valid email required">
+            </div>
+            <div class="form-group">
+              <label>Mobile Number <span class="req">*</span></label>
+              <div class="otp-row">
+                <input type="tel" id="r-mobile" placeholder="10-digit mobile number" maxlength="10">
+                <button class="btn-otp" id="otpBtn" onclick="sendOTP()">Send OTP</button>
+              </div>
+            </div>
+            <div class="form-group" id="otpGroup" style="display:none">
+              <label>Enter OTP <span class="req">*</span></label>
+              <div class="otp-row">
+                <input type="text" id="r-otp" placeholder="6-digit OTP" maxlength="6">
+                <button class="btn-otp" onclick="verifyOTP()">Verify OTP</button>
+              </div>
+              <span class="field-hint" id="otpHint">OTP sent to your mobile number. Valid for 10 minutes.</span>
+            </div>
+            <div class="form-group">
+              <label>Password <span class="req">*</span></label>
+              <input type="password" id="r-pass" placeholder="Min 8 chars, 1 uppercase, 1 number">
+            </div>
+            <div class="form-group">
+              <label>Confirm Password <span class="req">*</span></label>
+              <input type="password" id="r-cpass" placeholder="Re-enter password">
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">Security Verification</div>
+          <div class="form-group" style="max-width:400px">
+            <label>Enter CAPTCHA <span class="req">*</span></label>
+            <div class="captcha-box">
+              <div class="captcha-text" id="captchaText">X7K2P9</div>
+              <button class="btn-otp" style="margin-left:auto" onclick="refreshCaptcha()">↺ Refresh</button>
+            </div>
+            <input type="text" id="r-captcha" placeholder="Type the characters shown above" style="margin-top:8px">
+          </div>
+        </div>
+      </div>
+ 
+      <!-- STEP 2 -->
+      <div id="step2" class="form-step" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">Personal Details</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Gender <span class="req">*</span></label>
+              <select id="r-gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Transgender</option></select>
+            </div>
+            <div class="form-group">
+              <label>Category <span class="req">*</span></label>
+              <select id="r-cat"><option value="">Select Category</option><option>General</option><option>OBC-NCL</option><option>SC</option><option>ST</option><option>EWS</option></select>
+            </div>
+            <div class="form-group">
+              <label>Sub-Category</label>
+              <select><option value="">Select (if applicable)</option><option>PwD</option><option>Defence (CW)</option><option>None</option></select>
+            </div>
+            <div class="form-group">
+              <label>Nationality <span class="req">*</span></label>
+              <select><option>Indian</option><option>OCI</option><option>NRI</option><option>Other</option></select>
+            </div>
+            <div class="form-group">
+              <label>Mother's Name <span class="req">*</span></label>
+              <input type="text" placeholder="As per certificate">
+            </div>
+            <div class="form-group">
+              <label>Father's Name <span class="req">*</span></label>
+              <input type="text" placeholder="As per certificate">
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">Correspondence Address</div>
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>Address Line 1 <span class="req">*</span></label>
+              <input type="text" placeholder="House No., Street, Colony">
+            </div>
+            <div class="form-group full">
+              <label>Address Line 2</label>
+              <input type="text" placeholder="Area, Landmark (optional)">
+            </div>
+            <div class="form-group">
+              <label>City <span class="req">*</span></label>
+              <input type="text" placeholder="City">
+            </div>
+            <div class="form-group">
+              <label>State <span class="req">*</span></label>
+              <select>
+                <option>Select State</option>
+                <option>Tamil Nadu</option><option>Maharashtra</option><option>Delhi</option>
+                <option>Karnataka</option><option>Uttar Pradesh</option><option>Rajasthan</option>
+                <option>West Bengal</option><option>Gujarat</option><option>Bihar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>PIN Code <span class="req">*</span></label>
+              <input type="text" placeholder="6-digit PIN" maxlength="6">
+            </div>
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" value="India">
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- STEP 3 -->
+      <div id="step3" class="form-step" style="display:none">
+        <div class="form-section">
+          <div class="form-section-title">Class 10th Details</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Board <span class="req">*</span></label>
+              <select><option>CBSE</option><option>ICSE</option><option>State Board</option><option>IB</option><option>Other</option></select>
+            </div>
+            <div class="form-group">
+              <label>Year of Passing <span class="req">*</span></label>
+              <select>
+                <option>Select Year</option>
+                <option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Roll Number</label>
+              <input type="text" placeholder="10th Roll Number">
+            </div>
+            <div class="form-group">
+              <label>Percentage / CGPA <span class="req">*</span></label>
+              <input type="text" placeholder="e.g. 85.6% or 9.2 CGPA">
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">Class 12th / Qualifying Exam Details</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Board <span class="req">*</span></label>
+              <select><option>CBSE</option><option>ICSE</option><option>State Board</option><option>IB</option><option>Other</option></select>
+            </div>
+            <div class="form-group">
+              <label>Year of Passing <span class="req">*</span></label>
+              <select><option>2025 (Appearing)</option><option>2024</option><option>2023</option><option>2022</option></select>
+            </div>
+            <div class="form-group">
+              <label>Roll Number</label>
+              <input type="text" placeholder="12th Roll Number">
+            </div>
+            <div class="form-group">
+              <label>Aggregate % in PCB <span class="req">*</span></label>
+              <input type="text" placeholder="Physics + Chemistry + Biology %">
+            </div>
+            <div class="form-group">
+              <label>Physics Marks</label>
+              <input type="number" placeholder="Out of total">
+            </div>
+            <div class="form-group">
+              <label>Chemistry Marks</label>
+              <input type="number" placeholder="Out of total">
+            </div>
+            <div class="form-group">
+              <label>Biology Marks</label>
+              <input type="number" placeholder="Out of total">
+            </div>
+            <div class="form-group">
+              <label>Total Marks (PCB)</label>
+              <input type="number" placeholder="Out of total">
+            </div>
+          </div>
+        </div>
+        <div class="form-section">
+          <div class="form-section-title">Exam Centre Preference</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Choice 1 <span class="req">*</span></label>
+              <select><option>Chennai</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option><option>Kolkata</option><option>Hyderabad</option><option>Pune</option><option>Jaipur</option></select>
+            </div>
+            <div class="form-group">
+              <label>Choice 2</label>
+              <select><option>Select (optional)</option><option>Chennai</option><option>Mumbai</option><option>Delhi</option><option>Bengaluru</option></select>
+            </div>
+            <div class="form-group">
+              <label>Medium of Exam <span class="req">*</span></label>
+              <select><option>English</option><option>Hindi</option><option>Tamil</option><option>Telugu</option><option>Kannada</option><option>Malayalam</option><option>Gujarati</option><option>Bengali</option></select>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- STEP 4 -->
+      <div id="step4" class="form-step" style="display:none">
+        <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>Photo: JPG, min 10KB max 200KB, 3.5×4.5cm white background. Signature: JPG, min 4KB max 30KB, black ink on white paper. ID Proof: PDF or JPG, max 1MB.</div></div>
+        <div class="form-section">
+          <div class="form-section-title">Upload Documents</div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Passport Photograph <span class="req">*</span></label>
+              <div class="file-upload" onclick="this.querySelector('input').click()">
+                <input type="file" accept=".jpg,.jpeg" onchange="previewFile(this,'photo-preview')">
+                <div class="file-upload-icon">📷</div>
+                <div class="file-upload-text">Click to upload JPG (max 200KB)</div>
+                <div class="file-preview" id="photo-preview"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Candidate's Signature <span class="req">*</span></label>
+              <div class="file-upload" onclick="this.querySelector('input').click()">
+                <input type="file" accept=".jpg,.jpeg" onchange="previewFile(this,'sig-preview')">
+                <div class="file-upload-icon">✍️</div>
+                <div class="file-upload-text">Click to upload JPG (max 30KB)</div>
+                <div class="file-preview" id="sig-preview"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>ID Proof (Aadhaar/Passport) <span class="req">*</span></label>
+              <div class="file-upload" onclick="this.querySelector('input').click()">
+                <input type="file" accept=".jpg,.jpeg,.pdf" onchange="previewFile(this,'id-preview')">
+                <div class="file-upload-icon">🪪</div>
+                <div class="file-upload-text">Click to upload JPG/PDF (max 1MB)</div>
+                <div class="file-preview" id="id-preview"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Category Certificate (if applicable)</label>
+              <div class="file-upload" onclick="this.querySelector('input').click()">
+                <input type="file" accept=".jpg,.jpeg,.pdf" onchange="previewFile(this,'cat-preview')">
+                <div class="file-upload-icon">📄</div>
+                <div class="file-upload-text">Click to upload JPG/PDF (max 500KB)</div>
+                <div class="file-preview" id="cat-preview"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- STEP 5 REVIEW -->
+      <div id="step5" class="form-step" style="display:none">
+        <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>Please review all details carefully before submitting. Once submitted, corrections can only be made during the <strong>Correction Window (5–10 April 2025)</strong>.</div></div>
+        <div class="review-section">
+          <div class="form-section-title">Review Your Application</div>
+          <div style="margin-bottom:16px">
+            <strong style="font-size:14px;color:var(--navy)">Personal Information</strong>
+            <div class="review-grid" style="margin-top:10px">
+              <div class="review-item"><div class="review-label">Full Name</div><div class="review-value" id="rev-name">RAHUL KUMAR SHARMA</div></div>
+              <div class="review-item"><div class="review-label">Date of Birth</div><div class="review-value">15/08/2006</div></div>
+              <div class="review-item"><div class="review-label">Email</div><div class="review-value" id="rev-email">rahul@example.com</div></div>
+              <div class="review-item"><div class="review-label">Mobile</div><div class="review-value" id="rev-mobile">98XXXXXXXX</div></div>
+              <div class="review-item"><div class="review-label">Gender</div><div class="review-value">Male</div></div>
+              <div class="review-item"><div class="review-label">Category</div><div class="review-value">General</div></div>
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <strong style="font-size:14px;color:var(--navy)">Academic Details</strong>
+            <div class="review-grid" style="margin-top:10px">
+              <div class="review-item"><div class="review-label">10th Board</div><div class="review-value">CBSE (2022)</div></div>
+              <div class="review-item"><div class="review-label">12th Board</div><div class="review-value">CBSE (2024)</div></div>
+              <div class="review-item"><div class="review-label">PCB %</div><div class="review-value">87.6%</div></div>
+              <div class="review-item"><div class="review-label">Exam Centre</div><div class="review-value">Chennai</div></div>
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <strong style="font-size:14px;color:var(--navy)">Fee Details</strong>
+            <div class="review-grid" style="margin-top:10px">
+              <div class="review-item"><div class="review-label">Category</div><div class="review-value">General</div></div>
+              <div class="review-item"><div class="review-label">Application Fee</div><div class="review-value" style="color:var(--blue);font-size:18px;font-weight:600">₹1,600</div></div>
+              <div class="review-item"><div class="review-label">GST (18%)</div><div class="review-value">₹288</div></div>
+              <div class="review-item"><div class="review-label">Total Payable</div><div class="review-value" style="color:var(--red);font-size:18px;font-weight:600">₹1,888</div></div>
+            </div>
+          </div>
+          <div style="margin-bottom:20px">
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;line-height:1.5">
+              <input type="checkbox" id="declareCheck" style="width:auto;margin-top:2px">
+              I hereby declare that all the information provided in this application is true and correct to the best of my knowledge. I understand that any false information will lead to disqualification and legal action.
+            </label>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- ACTIONS -->
+      <div class="form-actions">
+        <div>
+          <button class="btn-back" id="backBtn" onclick="prevStep()" style="display:none">← Back</button>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span style="font-size:12px;color:var(--muted)" id="autoSaveStatus">💾 Draft auto-saved</span>
+          <button class="btn-next" id="nextBtn" onclick="nextStep()">Save & Continue →</button>
+          <button class="btn-submit" id="submitBtn" onclick="submitApplication()" style="display:none">✓ Submit Application</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== LOGIN ==================== -->
+<div class="page" id="page-login">
+  <div class="login-wrap">
+    <div class="login-side">
+      <h3>Candidate Portal</h3>
+      <p>Login with your Application Number and password to manage your application, download admit card, and check results.</p>
+      <ul class="login-steps">
+        <li>Apply online with guided form</li>
+        <li>Pay application fee securely</li>
+        <li>Download admit card with QR</li>
+        <li>Check results and scorecard</li>
+        <li>Participate in counselling</li>
+      </ul>
+      <div style="margin-top:24px;padding:14px;background:rgba(255,255,255,0.05);border-radius:4px;border:1px solid rgba(255,255,255,0.1)">
+        <div style="font-size:12px;color:var(--accent);font-weight:600;margin-bottom:6px">Demo Credentials</div>
+        <div style="font-size:12px;color:#8090b0">Application No: <strong style="color:#c0d0e8">NEXAM250001</strong></div>
+        <div style="font-size:12px;color:#8090b0">Password: <strong style="color:#c0d0e8">Test@1234</strong></div>
+      </div>
+    </div>
+    <div class="login-panel">
+      <div style="margin-bottom:28px">
+        <h2 style="font-size:22px;font-weight:600;color:var(--navy)">Candidate Login</h2>
+        <p style="font-size:13px;color:var(--muted);margin-top:4px">NEXAM 2025 — Official Portal</p>
+      </div>
+      <div id="loginView">
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Application Number <span class="req">*</span></label>
+          <input type="text" id="loginAppNo" placeholder="e.g. NEXAM250001">
+        </div>
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Password <span class="req">*</span></label>
+          <input type="password" id="loginPass" placeholder="Enter your password">
+        </div>
+        <div class="captcha-box" style="margin-bottom:16px">
+          <div class="captcha-text" id="loginCaptchaText">M4R8Z1</div>
+          <button class="btn-otp" style="margin-left:auto" onclick="refreshLoginCaptcha()">↺</button>
+        </div>
+        <div class="form-group" style="margin-bottom:20px">
+          <input type="text" id="loginCaptcha" placeholder="Enter CAPTCHA">
+        </div>
+        <button class="btn-next" style="width:100%;padding:12px" onclick="doLogin()">Login →</button>
+        <div style="text-align:center;margin-top:16px">
+          <span style="font-size:13px;color:var(--muted)">Forgot password? </span>
+          <span style="font-size:13px;color:var(--blue);cursor:pointer;font-weight:500" onclick="showForgotPw()">Reset via OTP</span>
+        </div>
+        <div style="text-align:center;margin-top:8px">
+          <span style="font-size:13px;color:var(--muted)">New candidate? </span>
+          <span style="font-size:13px;color:var(--blue);cursor:pointer;font-weight:500" onclick="showPage('register')">Register Here</span>
+        </div>
+      </div>
+      <div id="forgotPwView" style="display:none">
+        <div class="alert alert-info"><span class="alert-icon">ℹ️</span><div>Enter your registered email or mobile to receive OTP for password reset.</div></div>
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Registered Email / Mobile</label>
+          <input type="text" placeholder="Email or 10-digit mobile">
+        </div>
+        <button class="btn-next" style="width:100%;margin-bottom:10px" onclick="toast('OTP sent to your registered contact.','success')">Send OTP</button>
+        <button class="btn-back" style="width:100%" onclick="showLoginView()">← Back to Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== DASHBOARD ==================== -->
+<div class="page" id="page-dashboard">
+  <div class="alert alert-success"><span class="alert-icon">✅</span><div>Welcome back, <strong>Rahul Kumar Sharma</strong>! Your application is under review. Fee payment is pending.</div></div>
+  <div class="dash-grid">
+    <div class="dash-sidebar">
+      <div class="user-card">
+        <div class="user-avatar">R</div>
+        <div class="user-name">Rahul Kumar Sharma</div>
+        <div class="user-appno">NEXAM250001</div>
+        <div style="margin-top:12px;font-size:12px;color:#6080a0">General | Male<br>Exam: 15 May 2025</div>
+      </div>
+      <div class="sidebar-menu">
+        <div class="sidebar-menu-item active" onclick="showDashTab('overview',this)"><span class="icon">📊</span>Overview</div>
+        <div class="sidebar-menu-item" onclick="showDashTab('edit',this)"><span class="icon">✏️</span>Edit Application</div>
+        <div class="sidebar-menu-item" onclick="showDashTab('payment',this)"><span class="icon">💳</span>Fee Payment</div>
+        <div class="sidebar-menu-item" onclick="showPage('admit')"><span class="icon">🎫</span>Admit Card</div>
+        <div class="sidebar-menu-item" onclick="showPage('results')"><span class="icon">📈</span>Results</div>
+        <div class="sidebar-menu-item" onclick="toast('Confirmation page downloaded!','success')"><span class="icon">⬇️</span>Download Confirmation</div>
+        <div class="sidebar-menu-item" onclick="doLogout()"><span class="icon">🚪</span>Logout</div>
+      </div>
+    </div>
+    <div class="dash-main">
+      <!-- OVERVIEW -->
+      <div id="dash-overview">
+        <div class="status-card">
+          <div class="status-header">
+            <h3>Application Status</h3>
+            <span class="status-badge status-pending">Fee Pending</span>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot dot-green"></div>
+              <div class="timeline-content"><h4>Registration Completed</h4><p>12 Mar 2025, 3:45 PM</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot dot-green"></div>
+              <div class="timeline-content"><h4>Documents Uploaded</h4><p>12 Mar 2025, 4:10 PM</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot dot-amber"></div>
+              <div class="timeline-content"><h4>Fee Payment Pending</h4><p>Complete before 31 Mar 2025</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot dot-gray"></div>
+              <div class="timeline-content"><h4>Application Under Review</h4><p>After fee payment</p></div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot dot-gray"></div>
+              <div class="timeline-content"><h4>Admit Card Available</h4><p>Expected: 28 Apr 2025</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-bar" style="margin-bottom:0;border-radius:4px">
+          <div class="stat-item"><div class="stat-num" style="font-size:18px">NEXAM250001</div><div class="stat-label">Application No</div></div>
+          <div class="stat-item"><div class="stat-num" style="font-size:18px;color:var(--accent)">₹1,888</div><div class="stat-label">Fee Due</div></div>
+          <div class="stat-item"><div class="stat-num" style="font-size:18px;color:var(--green)">87.6%</div><div class="stat-label">PCB Marks</div></div>
+          <div class="stat-item"><div class="stat-num" style="font-size:18px">Chennai</div><div class="stat-label">Exam Centre</div></div>
+        </div>
+      </div>
+      <!-- EDIT TAB -->
+      <div id="dash-edit" style="display:none">
+        <div class="status-card">
+          <h3 style="margin-bottom:12px">Edit Application</h3>
+          <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>You can edit your application until <strong>31 March 2025</strong>. After final submission, edits will only be allowed during the Correction Window.</div></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn-next" onclick="showPage('register')">Edit Basic Details</button>
+            <button class="btn-back" onclick="toast('Contact admin for major changes.','info')">Edit Academic Details</button>
+          </div>
+        </div>
+      </div>
+      <!-- PAYMENT TAB -->
+      <div id="dash-payment" style="display:none">
+        <div class="payment-card">
+          <div class="payment-header"><h3>Fee Payment</h3><p style="font-size:12px;color:#8090b0;margin-top:4px">Complete payment to submit your application</p></div>
+          <div style="padding:20px">
+            <table class="fee-table" style="margin-bottom:16px">
+              <tr><th>Description</th><th>Amount</th></tr>
+              <tr><td>Application Fee (General)</td><td>₹1,600.00</td></tr>
+              <tr><td>GST @ 18%</td><td>₹288.00</td></tr>
+              <tr class="fee-highlight"><td><strong>Total Payable</strong></td><td><strong>₹1,888.00</strong></td></tr>
+            </table>
+            <div class="form-section-title">Select Payment Method</div>
+            <div class="payment-methods">
+              <div class="pay-method selected" onclick="selectPayMethod(this)"><div class="pay-icon">🏦</div>Net Banking</div>
+              <div class="pay-method" onclick="selectPayMethod(this)"><div class="pay-icon">💳</div>Credit/Debit Card</div>
+              <div class="pay-method" onclick="selectPayMethod(this)"><div class="pay-icon">📱</div>UPI</div>
+              <div class="pay-method" onclick="selectPayMethod(this)"><div class="pay-icon">💰</div>Wallet</div>
+            </div>
+            <div style="margin-top:16px">
+              <div class="form-group" style="max-width:340px">
+                <label>UPI ID / Card Number</label>
+                <input type="text" placeholder="Enter UPI ID or Card Number">
+              </div>
+            </div>
+            <button class="btn-primary" style="margin-top:16px;color:var(--navy)" onclick="doPayment()">Pay ₹1,888 Now →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== ADMIT CARD ==================== -->
+<div class="page" id="page-admit">
+  <div class="card" style="max-width:600px;margin:0 auto 24px">
+    <h3 style="margin-bottom:16px">Download Admit Card</h3>
+    <div class="form-grid" style="margin-bottom:16px">
+      <div class="form-group">
+        <label>Application Number</label>
+        <input type="text" id="admitAppNo" placeholder="e.g. NEXAM250001" value="NEXAM250001">
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="admitDOB" value="2006-08-15">
+      </div>
+    </div>
+    <div class="captcha-box" style="margin-bottom:16px">
+      <div class="captcha-text" id="admitCaptcha">K9P3M2</div>
+      <input type="text" placeholder="Enter CAPTCHA" style="flex:1;margin-left:12px">
+    </div>
+    <button class="btn-primary" style="color:var(--navy)" onclick="showAdmitCard()">View Admit Card</button>
+  </div>
+ 
+  <div id="admitCardSection" style="display:none">
+    <div class="admit-card" id="admitCardEl">
+      <div class="admit-header">
+        <div class="admit-logo">🎓</div>
+        <div>
+          <h2>NEXAM 2025 — Admit Card</h2>
+          <p>National Entrance Examination Authority | Ministry of Education</p>
+          <p style="margin-top:4px;font-size:11px;color:#607080">This is a computer-generated document and does not require a signature</p>
+        </div>
+      </div>
+      <div class="admit-body">
+        <div class="admit-grid">
+          <div>
+            <div class="admit-info-grid">
+              <div class="admit-field"><div class="label">Application No.</div><div class="value" style="font-family:'IBM Plex Mono',monospace;color:var(--blue)">NEXAM250001</div></div>
+              <div class="admit-field"><div class="label">Roll Number</div><div class="value" style="font-family:'IBM Plex Mono',monospace;color:var(--blue)">2501234567</div></div>
+              <div class="admit-field"><div class="label">Candidate Name</div><div class="value">RAHUL KUMAR SHARMA</div></div>
+              <div class="admit-field"><div class="label">Father's Name</div><div class="value">SURESH KUMAR SHARMA</div></div>
+              <div class="admit-field"><div class="label">Date of Birth</div><div class="value">15 August 2006</div></div>
+              <div class="admit-field"><div class="label">Gender</div><div class="value">Male</div></div>
+              <div class="admit-field"><div class="label">Category</div><div class="value">General</div></div>
+              <div class="admit-field"><div class="label">Medium</div><div class="value">English</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="admit-photo">📷<br><span style="font-size:10px">Candidate Photo</span></div>
+            <div class="qr-box" style="margin-top:10px">
+              <svg class="qr-pattern" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect width="90" height="90" fill="white"/>
+                <rect x="5" y="5" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+                <rect x="10" y="10" width="20" height="20" fill="#000"/>
+                <rect x="55" y="5" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+                <rect x="60" y="10" width="20" height="20" fill="#000"/>
+                <rect x="5" y="55" width="30" height="30" fill="none" stroke="#000" stroke-width="3"/>
+                <rect x="10" y="60" width="20" height="20" fill="#000"/>
+                <rect x="40" y="5" width="5" height="5" fill="#000"/><rect x="47" y="5" width="5" height="5" fill="#000"/>
+                <rect x="40" y="12" width="5" height="5" fill="#000"/><rect x="40" y="19" width="5" height="5" fill="#000"/>
+                <rect x="55" y="40" width="5" height="5" fill="#000"/><rect x="62" y="40" width="5" height="5" fill="#000"/>
+                <rect x="69" y="40" width="5" height="5" fill="#000"/><rect x="76" y="40" width="5" height="5" fill="#000"/>
+                <rect x="55" y="47" width="5" height="5" fill="#000"/><rect x="69" y="47" width="5" height="5" fill="#000"/>
+                <rect x="55" y="55" width="5" height="5" fill="#000"/><rect x="62" y="55" width="5" height="5" fill="#000"/>
+                <rect x="40" y="40" width="5" height="5" fill="#000"/><rect x="40" y="47" width="5" height="5" fill="#000"/>
+                <rect x="40" y="55" width="5" height="5" fill="#000"/><rect x="40" y="62" width="5" height="5" fill="#000"/>
+                <rect x="40" y="69" width="5" height="5" fill="#000"/><rect x="40" y="76" width="5" height="5" fill="#000"/>
+                <rect x="47" y="40" width="5" height="5" fill="#000"/><rect x="47" y="55" width="5" height="5" fill="#000"/>
+                <rect x="47" y="62" width="5" height="5" fill="#000"/><rect x="47" y="76" width="5" height="5" fill="#000"/>
+                <rect x="55" y="62" width="5" height="5" fill="#000"/><rect x="69" y="62" width="5" height="5" fill="#000"/>
+                <rect x="76" y="55" width="5" height="5" fill="#000"/><rect x="76" y="69" width="5" height="5" fill="#000"/>
+                <rect x="62" y="69" width="5" height="5" fill="#000"/><rect x="55" y="76" width="5" height="5" fill="#000"/>
+                <rect x="69" y="76" width="5" height="5" fill="#000"/><rect x="76" y="76" width="5" height="5" fill="#000"/>
+              </svg>
+              <div style="font-size:10px;color:var(--muted)">Scan to verify</div>
+            </div>
+          </div>
+        </div>
+        <div class="admit-exam-details">
+          <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:10px">Examination Details</div>
+          <div class="admit-exam-grid">
+            <div class="admit-field"><div class="label">Exam Date</div><div class="value">Thursday, 15 May 2025</div></div>
+            <div class="admit-field"><div class="label">Reporting Time</div><div class="value">8:30 AM (Gate closes 9:15 AM)</div></div>
+            <div class="admit-field"><div class="label">Exam Time</div><div class="value">10:00 AM – 1:00 PM (3 hrs)</div></div>
+            <div class="admit-field"><div class="label">Exam Centre Code</div><div class="value">TN-04-0872</div></div>
+            <div class="admit-field"><div class="label">Centre Name</div><div class="value">Sri Venkateswara Higher Secondary School</div></div>
+            <div class="admit-field"><div class="label">Centre Address</div><div class="value">Anna Nagar, Chennai – 600040</div></div>
+          </div>
+        </div>
+        <div class="admit-instr">
+          <h4>Instructions for Candidates</h4>
+          <ul>
+            <li>Carry this Admit Card along with an original photo ID proof</li>
+            <li>Report at least 90 minutes before exam start time</li>
+            <li>Electronic devices including mobile phones are strictly prohibited</li>
+            <li>Rough work must be done in the space provided in question paper</li>
+            <li>Blue/Black ball-point pen for OMR filling. Use HB pencil for bubbles</li>
+            <li>Possession of unfair means will lead to immediate disqualification</li>
+          </ul>
+        </div>
+      </div>
+      <div class="admit-footer">
+        Generated on: 28 Apr 2025 | NEXAM 2025 | nexam.nic.in | This document is valid only with QR verification
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px;display:flex;justify-content:center;gap:12px">
+      <button class="btn-primary" style="color:var(--navy)" onclick="window.print()">🖨️ Print Admit Card</button>
+      <button class="btn-back" onclick="toast('Admit card PDF saved!','success')">⬇️ Download PDF</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== RESULTS ==================== -->
+<div class="page" id="page-results">
+  <div class="results-search">
+    <h3 style="margin-bottom:16px">Check NEXAM 2025 Result</h3>
+    <div class="form-grid" style="max-width:600px;margin-bottom:16px">
+      <div class="form-group">
+        <label>Application Number</label>
+        <input type="text" id="resAppNo" placeholder="e.g. NEXAM250001" value="NEXAM250001">
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="resDOB" value="2006-08-15">
+      </div>
+    </div>
+    <button class="btn-primary" style="color:var(--navy)" onclick="showResult()">View Scorecard</button>
+  </div>
+ 
+  <div id="resultSection" style="display:none">
+    <div class="scorecard">
+      <div class="scorecard-header">
+        <div style="font-size:15px;font-weight:600;margin-bottom:4px">NEXAM 2025 — Score Card</div>
+        <div class="score-main">612</div>
+        <div class="score-label">Total Score out of 720</div>
+        <div style="margin-top:12px;font-size:14px;color:#a0b0cc">RAHUL KUMAR SHARMA &nbsp;|&nbsp; NEXAM250001</div>
+      </div>
+      <div class="score-grid">
+        <div class="score-subject"><div class="marks">198</div><div class="subj">Physics<br><span style="font-size:11px;color:#94a3b8">out of 180</span></div></div>
+        <div class="score-subject"><div class="marks">207</div><div class="subj">Chemistry<br><span style="font-size:11px;color:#94a3b8">out of 180</span></div></div>
+        <div class="score-subject"><div class="marks">207</div><div class="subj">Biology<br><span style="font-size:11px;color:#94a3b8">out of 360</span></div></div>
+      </div>
+      <div style="padding:16px 24px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-size:12px;background:var(--light)">
+        <div><span style="color:var(--muted)">Correct: </span><strong style="color:var(--green)">153</strong></div>
+        <div><span style="color:var(--muted)">Incorrect: </span><strong style="color:var(--red)">12</strong></div>
+        <div><span style="color:var(--muted)">Unattempted: </span><strong>15</strong></div>
+      </div>
+      <div class="rank-section">
+        <div class="rank-item"><div class="rank-num">1,247</div><div class="rank-label">All India Rank</div></div>
+        <div class="rank-item"><div class="rank-num">342</div><div class="rank-label">State Rank (TN)</div></div>
+        <div class="rank-item"><div class="rank-num">98.2</div><div class="rank-label">Percentile</div></div>
+        <div class="rank-item"><div class="rank-num" style="color:var(--green)">Qualified</div><div class="rank-label">Status</div></div>
+      </div>
+      <div style="padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-primary" style="color:var(--navy);font-size:13px;padding:8px 20px" onclick="window.print()">🖨️ Print Scorecard</button>
+        <button class="btn-back" style="font-size:13px;padding:8px 20px" onclick="toast('Scorecard PDF saved!','success')">⬇ Download PDF</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== ADMIN ==================== -->
+<div class="page" id="page-admin">
+  <div class="alert alert-error"><span class="alert-icon">🔐</span><div>Admin Panel — Restricted Access. For demonstration only. In production, this area is protected by multi-factor authentication and role-based access control.</div></div>
+  <div class="admin-grid">
+    <div class="admin-sidebar">
+      <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1)">
+        <div style="font-size:14px;color:#fff;font-weight:600">Admin Panel</div>
+        <div style="font-size:11px;color:#607090;margin-top:2px">NEXAM 2025</div>
+      </div>
+      <div class="admin-section">Dashboard</div>
+      <div class="admin-nav-item active" onclick="adminNav(this,'admin-dash')">📊 Overview</div>
+      <div class="admin-section">Applications</div>
+      <div class="admin-nav-item" onclick="adminNav(this,'admin-apps')">📋 All Applications</div>
+      <div class="admin-nav-item" onclick="adminNav(this,'admin-verify')">🔍 Verify Documents</div>
+      <div class="admin-section">Content</div>
+      <div class="admin-nav-item" onclick="adminNav(this,'admin-notice')">📢 Announcements</div>
+      <div class="admin-section">Reports</div>
+      <div class="admin-nav-item" onclick="adminNav(this,'admin-reports')">📈 Generate Reports</div>
+    </div>
+    <div>
+      <!-- ADMIN OVERVIEW -->
+      <div id="admin-dash">
+        <div class="admin-stats">
+          <div class="admin-stat"><div class="admin-stat-num" style="color:var(--blue)">24,815</div><div class="admin-stat-label">Total Registrations</div></div>
+          <div class="admin-stat"><div class="admin-stat-num" style="color:var(--green)">21,340</div><div class="admin-stat-label">Fee Paid</div></div>
+          <div class="admin-stat"><div class="admin-stat-num" style="color:var(--accent2)">2,100</div><div class="admin-stat-label">Pending Review</div></div>
+          <div class="admin-stat"><div class="admin-stat-num" style="color:var(--red)">1,375</div><div class="admin-stat-label">Flagged/Incomplete</div></div>
+        </div>
+        <div class="status-card">
+          <h3 style="margin-bottom:14px">Recent Activity</h3>
+          <table class="data-table">
+            <thead><tr><th>App No</th><th>Name</th><th>Status</th><th>Date</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>NEXAM250001</td><td>Rahul K Sharma</td><td><span class="status-badge status-pending" style="font-size:11px">Fee Pending</span></td><td>12 Mar 2025</td><td><button class="action-btn btn-view" onclick="toast('Application loaded','info')">View</button></td></tr>
+              <tr><td>NEXAM250002</td><td>Priya Nair</td><td><span class="status-badge status-submitted" style="font-size:11px">Submitted</span></td><td>11 Mar 2025</td><td><span style="display:flex;gap:6px"><button class="action-btn btn-approve" onclick="toast('Application approved!','success')">Approve</button><button class="action-btn btn-reject" onclick="toast('Application rejected.','error')">Reject</button></span></td></tr>
+              <tr><td>NEXAM250003</td><td>Mohammed Salim</td><td><span class="status-badge status-submitted" style="font-size:11px">Submitted</span></td><td>10 Mar 2025</td><td><span style="display:flex;gap:6px"><button class="action-btn btn-approve" onclick="toast('Application approved!','success')">Approve</button><button class="action-btn btn-reject" onclick="toast('Application rejected.','error')">Reject</button></span></td></tr>
+              <tr><td>NEXAM250004</td><td>Ananya Gupta</td><td><span class="status-badge status-incomplete" style="font-size:11px">Doc Missing</span></td><td>09 Mar 2025</td><td><button class="action-btn btn-view" onclick="toast('Application loaded','info')">View</button></td></tr>
+              <tr><td>NEXAM250005</td><td>Karthik Rajan</td><td><span class="status-badge status-submitted" style="font-size:11px">Submitted</span></td><td>08 Mar 2025</td><td><span style="display:flex;gap:6px"><button class="action-btn btn-approve" onclick="toast('Application approved!','success')">Approve</button><button class="action-btn btn-reject" onclick="toast('Application rejected.','error')">Reject</button></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ADMIN APPS -->
+      <div id="admin-apps" style="display:none">
+        <div class="status-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <h3>All Applications</h3>
+            <div style="display:flex;gap:10px">
+              <input type="text" placeholder="Search by name/app no" style="width:200px;padding:7px 12px;border:1px solid var(--border);border-radius:3px;font-family:inherit;font-size:13px">
+              <select style="padding:7px;border:1px solid var(--border);border-radius:3px;font-family:inherit;font-size:13px"><option>All Status</option><option>Submitted</option><option>Pending</option><option>Approved</option></select>
+              <button class="btn-primary" style="font-size:12px;padding:7px 14px;color:var(--navy)" onclick="toast('CSV exported!','success')">⬇ Export CSV</button>
+            </div>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>App No</th><th>Name</th><th>Category</th><th>Centre</th><th>Fee</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>NEXAM250001</td><td>Rahul K Sharma</td><td>General</td><td>Chennai</td><td style="color:var(--red)">Pending</td><td><span class="status-badge status-pending" style="font-size:11px">Fee Pending</span></td><td><button class="action-btn btn-view">View</button></td></tr>
+              <tr><td>NEXAM250002</td><td>Priya Nair</td><td>OBC</td><td>Kochi</td><td style="color:var(--green)">Paid ✓</td><td><span class="status-badge status-submitted" style="font-size:11px">Submitted</span></td><td><button class="action-btn btn-approve">Approve</button></td></tr>
+              <tr><td>NEXAM250003</td><td>Mohammed Salim</td><td>General</td><td>Mumbai</td><td style="color:var(--green)">Paid ✓</td><td><span class="status-badge status-submitted" style="font-size:11px">Submitted</span></td><td><button class="action-btn btn-approve">Approve</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ADMIN VERIFY -->
+      <div id="admin-verify" style="display:none">
+        <div class="status-card">
+          <h3 style="margin-bottom:14px">Document Verification Queue</h3>
+          <div class="alert alert-warn"><span class="alert-icon">⚠️</span><div>2,100 applications pending document verification. Use AI-assist to flag suspicious documents.</div></div>
+          <table class="data-table">
+            <thead><tr><th>App No</th><th>Candidate</th><th>Photo</th><th>Signature</th><th>ID Proof</th><th>Category Cert</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>NEXAM250006</td><td>Sunita Rao</td><td>✅</td><td>✅</td><td>✅</td><td>⚠️ Blur</td><td><span style="display:flex;gap:5px"><button class="action-btn btn-approve" onclick="toast('Documents verified!','success')">Verify</button><button class="action-btn btn-reject" onclick="toast('Flagged for review.','error')">Flag</button></span></td></tr>
+              <tr><td>NEXAM250007</td><td>Amit Singh</td><td>⚠️ Size</td><td>✅</td><td>✅</td><td>—</td><td><span style="display:flex;gap:5px"><button class="action-btn btn-approve" onclick="toast('Documents verified!','success')">Verify</button><button class="action-btn btn-reject" onclick="toast('Flagged for review.','error')">Flag</button></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ADMIN NOTICE -->
+      <div id="admin-notice" style="display:none">
+        <div class="status-card">
+          <h3 style="margin-bottom:16px">Post Announcement</h3>
+          <div class="form-group" style="margin-bottom:12px"><label>Title</label><input type="text" placeholder="Announcement title"></div>
+          <div class="form-group" style="margin-bottom:12px"><label>Message</label><textarea rows="4" placeholder="Enter announcement text..." style="resize:vertical"></textarea></div>
+          <div class="form-group" style="margin-bottom:16px"><label>Priority</label><select><option>Normal</option><option>Important</option><option>Urgent</option></select></div>
+          <button class="btn-primary" style="color:var(--navy)" onclick="toast('Announcement published!','success')">Publish Announcement</button>
+        </div>
+      </div>
+      <!-- ADMIN REPORTS -->
+      <div id="admin-reports" style="display:none">
+        <div class="status-card">
+          <h3 style="margin-bottom:16px">Generate Reports</h3>
+          <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+            <div class="card" style="text-align:center;cursor:pointer" onclick="toast('CSV downloaded!','success')">
+              <div style="font-size:32px;margin-bottom:8px">📊</div>
+              <div style="font-weight:600;font-size:14px">All Applications</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">Export as CSV / Excel</div>
+            </div>
+            <div class="card" style="text-align:center;cursor:pointer" onclick="toast('Payment report downloaded!','success')">
+              <div style="font-size:32px;margin-bottom:8px">💰</div>
+              <div style="font-weight:600;font-size:14px">Payment Report</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">Fee collection summary</div>
+            </div>
+            <div class="card" style="text-align:center;cursor:pointer" onclick="toast('Category report downloaded!','success')">
+              <div style="font-size:32px;margin-bottom:8px">📋</div>
+              <div style="font-weight:600;font-size:14px">Category Report</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">Distribution by category</div>
+            </div>
+            <div class="card" style="text-align:center;cursor:pointer" onclick="toast('Centre report downloaded!','success')">
+              <div style="font-size:32px;margin-bottom:8px">🏫</div>
+              <div style="font-weight:600;font-size:14px">Centre-wise Report</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:4px">Candidate count per centre</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ==================== HELPDESK ==================== -->
+<div class="page" id="page-helpdesk">
+  <div class="grid-3">
+    <div style="grid-column:1/-1">
+      <div class="stats-bar" style="border-radius:4px;margin-bottom:24px">
+        <div class="stat-item"><div style="font-size:16px;font-weight:600;color:var(--blue)">1800-XXX-XXXX</div><div class="stat-label">Toll Free (9AM–6PM)</div></div>
+        <div class="stat-item"><div style="font-size:14px;font-weight:600;color:var(--text)">help@nexam.nic.in</div><div class="stat-label">Email Support</div></div>
+        <div class="stat-item"><div style="font-size:16px;font-weight:600;color:var(--green)">24–48 hrs</div><div class="stat-label">Response Time</div></div>
+      </div>
+    </div>
+    <div style="grid-column:1/3">
+      <div class="card">
+        <h3 style="margin-bottom:16px">❓ Frequently Asked Questions</h3>
+        <div class="faq-item open">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I register for NEXAM 2025? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Visit the Registration page, click "Apply Now" and complete all 5 steps: Basic Details → Personal Details → Academic Details → Document Upload → Review & Submit. You will need a valid mobile number for OTP verification, a passport photograph, and your class 10 & 12 mark sheets.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What is the application fee and how can I pay? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">General/OBC: ₹1,600 | SC/ST/PwD/EWS: ₹900. Payment can be made via Net Banking, Credit/Debit Card, UPI, or Wallet. Late fee of ₹200 applies after the original deadline.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">I forgot my password. How do I reset it? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Click "Forgot Password" on the Login page. Enter your registered email or mobile number, receive an OTP, and set a new password. Contact helpdesk if your registered contact details have changed.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Can I edit my application after submission? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Yes. A Correction Window will be open from 5 April to 10 April 2025. Only certain fields like exam centre preference and photograph can be edited. Name, DOB, and category cannot be changed.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What documents do I need to upload? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Mandatory: Passport photograph (JPG, max 200KB), Signature (JPG, max 30KB), Photo ID (Aadhaar/Passport/PAN – max 1MB). Optional: Category certificate if claiming reservation.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">When will Admit Cards be released? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Admit Cards will be available for download from 28 April 2025. Log in with your Application Number and Date of Birth to access your Admit Card. No physical admit card will be sent by post.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How is the score calculated? What is the marking scheme? <span class="faq-arrow">▾</span></div>
+          <div class="faq-a">Each correct answer: +4 marks. Each wrong answer: −1 mark. Unattempted questions: 0. Total: 180 questions × 4 = 720 marks. Physics: 45Q (180M), Chemistry: 45Q (180M), Biology: 90Q (360M).</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="ticket-form">
+        <h3 style="margin-bottom:16px">📩 Submit a Support Ticket</h3>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Your Name</label>
+          <input type="text" id="hd-name" placeholder="Full name">
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Application Number</label>
+          <input type="text" placeholder="NEXAM25XXXX (if registered)">
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group" style="margin-bottom:12px">
+          <label>Issue Category</label>
+          <select>
+            <option>Registration Issue</option>
+            <option>Payment Problem</option>
+            <option>Document Upload Error</option>
+            <option>Login Problem</option>
+            <option>Admit Card Issue</option>
+            <option>Result Query</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Describe Your Issue</label>
+          <textarea rows="4" placeholder="Please describe your issue in detail..." style="resize:vertical"></textarea>
+        </div>
+        <button class="btn-next" style="width:100%" onclick="submitTicket()">Submit Ticket →</button>
+        <div class="ticket-id" id="ticketId">✅ Ticket raised! Your Ticket ID: <strong>TKT-2025-004872</strong>. You will receive a response within 24–48 working hours.</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🎓 NEXAM 2025</h4>
+      <p>National Testing Authority</p>
+      <p>Ministry of Education, GoI</p>
+      <p style="margin-top:8px;font-size:12px">© 2025 NTA. All rights reserved.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a onclick="showPage('register')">New Registration</a>
+      <a onclick="showPage('login')">Candidate Login</a>
+      <a onclick="showPage('admit')">Admit Card</a>
+      <a onclick="showPage('results')">Results</a>
+      <a onclick="showPage('bulletin')">Information Bulletin</a>
+    </div>
+    <div class="footer-col">
+      <h4>Important Links</h4>
+      <a>NTA Official Website</a>
+      <a>RTI Portal</a>
+      <a>Grievance Redressal</a>
+      <a>Previous Year Papers</a>
+      <a>Mock Test</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>📞 1800-XXX-XXXX (Toll Free)</p>
+      <p>📧 help@nexam.nic.in</p>
+      <p>🕐 Mon–Sat, 9AM–6PM</p>
+      <p style="margin-top:8px">📍 Block C-20, Sector 62<br>Noida, UP – 201309</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Website last updated: 15 Mar 2025 | Best viewed in Chrome, Firefox, Edge | Screen resolution 1024×768 or higher</span>
+    <span>🔒 SSL Secured | GIGW Compliant</span>
+  </div>
+</footer>
+ 
+<script>
+// ========== NAVIGATION ==========
+let currentPage = 'home';
+function showPage(p) {
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  currentPage = p;
+  window.scrollTo(0,0);
+}
+function navClick(el, p) {
+  document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+  el.classList.add('active');
+  showPage(p);
+}
+ 
+// ========== COUNTDOWN ==========
+function updateCountdown() {
+  const deadline = new Date('2025-03-31T23:59:59');
+  const now = new Date();
+  const diff = deadline - now;
+  if(diff <= 0) {
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+ 
+// ========== TOAST ==========
+function toast(msg, type='info') {
+  const container = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  const icons = {info:'ℹ️',success:'✅',error:'❌',warn:'⚠️'};
+  t.innerHTML = `<span>${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  container.appendChild(t);
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(100%)'; t.style.transition='all 0.3s'; setTimeout(()=>t.remove(),300); }, 3000);
+}
+ 
+// ========== MULTI-STEP FORM ==========
+let currentStep = 1;
+const totalSteps = 5;
+function updateStepUI() {
+  document.querySelectorAll('.form-step').forEach((el,i) => el.style.display = (i+1 === currentStep) ? 'block' : 'none');
+  document.querySelectorAll('.step-item').forEach((el,i) => {
+    el.classList.remove('active','done');
+    if(i+1 === currentStep) el.classList.add('active');
+    if(i+1 < currentStep) { el.classList.add('done'); el.querySelector('.step-num').textContent='✓'; }
+    else el.querySelector('.step-num').textContent = i+1;
+  });
+  document.getElementById('backBtn').style.display = currentStep > 1 ? 'inline-block' : 'none';
+  document.getElementById('nextBtn').style.display = currentStep < totalSteps ? 'inline-block' : 'none';
+  document.getElementById('submitBtn').style.display = currentStep === totalSteps ? 'inline-block' : 'none';
+  if(currentStep === totalSteps) updateReview();
+}
+function nextStep() {
+  if(currentStep === 1 && !validateStep1()) return;
+  if(currentStep < totalSteps) { currentStep++; updateStepUI(); toast('Progress auto-saved','success'); }
+}
+function prevStep() { if(currentStep > 1) { currentStep--; updateStepUI(); } }
+function validateStep1() {
+  const fname = document.getElementById('r-fname').value.trim();
+  const email = document.getElementById('r-email').value.trim();
+  const mobile = document.getElementById('r-mobile').value.trim();
+  const pass = document.getElementById('r-pass').value;
+  const cpass = document.getElementById('r-cpass').value;
+  const captcha = document.getElementById('r-captcha').value.trim();
+  if(!fname) { toast('Please enter your first name.','error'); return false; }
+  if(!email || !email.includes('@')) { toast('Please enter a valid email address.','error'); return false; }
+  if(!mobile || mobile.length !== 10) { toast('Please enter a valid 10-digit mobile number.','error'); return false; }
+  if(pass.length < 8) { toast('Password must be at least 8 characters.','error'); return false; }
+  if(pass !== cpass) { toast('Passwords do not match.','error'); return false; }
+  if(captcha.toUpperCase() !== document.getElementById('captchaText').textContent) { toast('Incorrect CAPTCHA. Please try again.','error'); refreshCaptcha(); return false; }
+  return true;
+}
+function updateReview() {
+  const fname = document.getElementById('r-fname').value || 'CANDIDATE';
+  const lname = document.getElementById('r-lname').value || '';
+  document.getElementById('rev-name').textContent = (fname+' '+lname).toUpperCase();
+  document.getElementById('rev-email').textContent = document.getElementById('r-email').value || 'Not entered';
+  document.getElementById('rev-mobile').textContent = document.getElementById('r-mobile').value || 'Not entered';
+}
+function submitApplication() {
+  if(!document.getElementById('declareCheck').checked) { toast('Please accept the declaration to submit.','error'); return; }
+  openModal('Confirm Submission',
+    '<p style="font-size:14px;color:var(--text);margin-bottom:12px">Are you sure you want to submit your application? This action cannot be undone without correction window.</p><div class="alert alert-warn" style="font-size:13px"><span>⚠️</span><div>You will be redirected to payment page after submission.</div></div>',
+    `<button class="btn-back" onclick="closeModal()">Cancel</button>
+     <button class="btn-submit" onclick="finalSubmit()">Yes, Submit Application</button>`
+  );
+}
+function finalSubmit() {
+  closeModal();
+  toast('Application submitted! Redirecting to payment...','success');
+  setTimeout(() => { showPage('dashboard'); showDashTab('payment', document.querySelector('.sidebar-menu-item:nth-child(3)')); }, 1500);
+}
+ 
+// ========== CAPTCHA ==========
+const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function genCaptcha(){ return Array.from({length:6},()=>chars[Math.floor(Math.random()*chars.length)]).join(''); }
+function refreshCaptcha(){ document.getElementById('captchaText').textContent=genCaptcha(); document.getElementById('r-captcha').value=''; }
+function refreshLoginCaptcha(){ document.getElementById('loginCaptchaText').textContent=genCaptcha(); document.getElementById('loginCaptcha').value=''; }
+ 
+// ========== OTP ==========
+let otpSent = false, realOTP = '';
+function sendOTP() {
+  const mobile = document.getElementById('r-mobile').value;
+  if(!mobile || mobile.length !== 10) { toast('Enter valid 10-digit mobile number first.','error'); return; }
+  realOTP = String(Math.floor(100000+Math.random()*900000));
+  document.getElementById('otpGroup').style.display = 'flex';
+  document.getElementById('otpBtn').textContent = 'Resend OTP';
+  document.getElementById('otpHint').textContent = `Demo OTP: ${realOTP} (In production, sent via SMS)`;
+  toast('OTP sent to '+mobile.substring(0,4)+'XXXXXX','success');
+  otpSent = true;
+}
+function verifyOTP() {
+  const entered = document.getElementById('r-otp').value;
+  if(entered === realOTP || entered === '123456') {
+    toast('Mobile number verified successfully!','success');
+    document.getElementById('otpGroup').style.display='none';
+    document.getElementById('otpBtn').disabled=true;
+    document.getElementById('otpBtn').textContent='✓ Verified';
+  } else { toast('Incorrect OTP. Please try again.','error'); }
+}
+ 
+// ========== LOGIN ==========
+function doLogin() {
+  const appno = document.getElementById('loginAppNo').value;
+  const pass = document.getElementById('loginPass').value;
+  if(!appno || !pass) { toast('Please enter application number and password.','error'); return; }
+  if(appno === 'NEXAM250001' && pass === 'Test@1234') {
+    toast('Login successful! Welcome back.','success');
+    setTimeout(() => showPage('dashboard'), 800);
+  } else { toast('Invalid credentials. Use NEXAM250001 / Test@1234','error'); }
+}
+function showForgotPw(){ document.getElementById('loginView').style.display='none'; document.getElementById('forgotPwView').style.display='block'; }
+function showLoginView(){ document.getElementById('loginView').style.display='block'; document.getElementById('forgotPwView').style.display='none'; }
+function doLogout(){ toast('Logged out successfully.','info'); setTimeout(()=>showPage('login'),800); }
+ 
+// ========== DASHBOARD TABS ==========
+function showDashTab(tab, el) {
+  ['overview','edit','payment'].forEach(t => {
+    const el2 = document.getElementById('dash-'+t);
+    if(el2) el2.style.display = t===tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.sidebar-menu-item').forEach(e=>e.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+ 
+// ========== ADMIN NAV ==========
+function adminNav(el, tab) {
+  ['admin-dash','admin-apps','admin-verify','admin-notice','admin-reports'].forEach(t=>{
+    const el2=document.getElementById(t);
+    if(el2) el2.style.display = t===tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.admin-nav-item').forEach(e=>e.classList.remove('active'));
+  el.classList.add('active');
+}
+ 
+// ========== FILE UPLOAD ==========
+function previewFile(input, previewId) {
+  const file = input.files[0];
+  const el = document.getElementById(previewId);
+  if(file) {
+    const sizeMB = (file.size/1024/1024).toFixed(2);
+    el.textContent = `✓ ${file.name} (${sizeMB}MB)`;
+    toast(`${file.name} uploaded successfully.`,'success');
+  }
+}
+ 
+// ========== PAYMENT ==========
+function selectPayMethod(el) { document.querySelectorAll('.pay-method').forEach(e=>e.classList.remove('selected')); el.classList.add('selected'); }
+function doPayment() {
+  openModal('Confirm Payment',
+    '<div style="text-align:center;padding:10px 0"><div style="font-size:36px;margin-bottom:12px">💳</div><div style="font-size:22px;font-weight:600;color:var(--blue);margin-bottom:8px">₹1,888</div><div style="font-size:14px;color:var(--muted)">NEXAM 2025 Application Fee<br>Application No: NEXAM250001</div></div>',
+    `<button class="btn-back" onclick="closeModal()">Cancel</button>
+     <button class="btn-submit" onclick="confirmPayment()">Confirm Payment</button>`
+  );
+}
+function confirmPayment() {
+  closeModal();
+  toast('Payment successful! Transaction ID: TXN2025031200189','success');
+  setTimeout(()=>{
+    document.querySelector('.status-badge').textContent='Submitted';
+    document.querySelector('.status-badge').className='status-badge status-submitted';
+    toast('Application submitted successfully!','success');
+    showDashTab('overview', document.querySelector('.sidebar-menu-item'));
+  }, 1500);
+}
+ 
+// ========== ADMIT CARD ==========
+function showAdmitCard() {
+  document.getElementById('admitCardSection').style.display='block';
+  toast('Admit card loaded successfully.','success');
+  document.getElementById('admitCardSection').scrollIntoView({behavior:'smooth'});
+}
+ 
+// ========== RESULTS ==========
+function showResult() {
+  document.getElementById('resultSection').style.display='block';
+  toast('Scorecard loaded.','success');
+  document.getElementById('resultSection').scrollIntoView({behavior:'smooth'});
+}
+ 
+// ========== FAQ ==========
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+ 
+// ========== HELPDESK TICKET ==========
+function submitTicket() {
+  const name = document.getElementById('hd-name').value;
+  if(!name) { toast('Please enter your name.','error'); return; }
+  document.getElementById('ticketId').style.display='block';
+  toast('Support ticket submitted! Ticket ID: TKT-2025-004872','success');
+}
+ 
+// ========== MODAL ==========
+function openModal(title, body, footer) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modalFooter').innerHTML = footer;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+ 
+// ========== AUTO-SAVE SIMULATION ==========
+let autoSaveTimer;
+document.addEventListener('input', () => {
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(() => {
+    document.getElementById('autoSaveStatus').textContent = '💾 Draft saved just now';
+  }, 2000);
+});
+ 
+// ========== INIT ==========
+updateStepUI();
+</script>
+</body>
+</html>
